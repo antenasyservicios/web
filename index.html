@@ -178,6 +178,40 @@ button[type="submit"]:hover {
 }
 
 
+
+     /* Estilos generales para los botones de contacto */
+.sticky-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.button {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    width: 40px;
+    height: 40px;
+    line-height: 20px;
+}
+
+.button i {
+    font-size: 15px;
+}
+
+/* Estilo específico para el botón de WhatsApp */
+#whatsapp-button {
+    background-color: #25d366;
+}
+
 /* Agrega estilos para el contenido de las secciones según sea necesario */
 </style>
 </head>
@@ -249,7 +283,12 @@ button[type="submit"]:hover {
         <h2>Precios de Servicios</h2>
         <!-- Aquí puedes agregar la lista de precios de servicios con nombres, descripciones y costos -->
     </section>
-
+ <div class="sticky-buttons">
+        <a href="tel:+34680581488" class="button"><i class="fas fa-phone"></i></a>
+        <a href="mailto:antenasyservicios@yahoo.es" class="button"><i class="fas fa-envelope"></i></a>
+        <a href="" id="whatsapp-button" class="button"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <script src="script.js"></script>
     <footer>
         <p>&copy; 2023 Antenas y Servicios</p>
     </footer>
@@ -300,6 +339,23 @@ setInterval(nextSlide, 5000); // Cambia de slide cada 5 segundos
             // En este ejemplo, simplemente mostraremos el mensaje de confirmación
             document.getElementById("mensajeConfirmacion").style.display = "block";
         }
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    // Array de números de teléfono
+    var phoneNumbers = ["680581488", "610974784"];
+    
+    // Elije aleatoriamente un número de teléfono
+    var randomPhone = phoneNumbers[Math.floor(Math.random() * phoneNumbers.length)];
+    
+    // URL de WhatsApp con el número aleatorio
+    var whatsappUrl = "https://api.whatsapp.com/send?phone=34" + randomPhone + "&text=Quiero%20más%20información%20de%20Antenas%20y%20Servicios%20Madrid";
+    
+    // Obtén el botón de WhatsApp y establece su href
+    var whatsappButton = document.getElementById("whatsapp-button");
+    whatsappButton.href = whatsappUrl;
+});
+
 </script>
 
 </body>
