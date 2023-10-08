@@ -128,6 +128,54 @@ body {
 }
 
 
+#formulario {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+}
+
+#formulario h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#mensajeConfirmacion {
+    display: none;
+    color: green;
+    margin-top: 10px;
+    font-weight: bold;
+}
 
 
 /* Agrega estilos para el contenido de las secciones según sea necesario */
@@ -143,7 +191,7 @@ body {
         <ul>
             <li><a href="#horarios">Horarios</a></li>
             <li><a href="#ubicacion">Ubicación</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#formulario">Contacto</a></li>
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#precios">Precios</a></li>
         </ul>
@@ -177,10 +225,20 @@ body {
         <div id="map" style="width: 100%; height: 400px;"></div>
     </section>
 
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <!-- Aquí puedes agregar la información de contacto desde tu briefing, como números de teléfono y dirección de correo electrónico -->
+     <section id="formulario">
+        <h2>Formulario de Consulta</h2>
+        <form id="consultaForm" onsubmit="enviarConsulta(event)">
+            <label for="telefono">Número de Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" pattern="[0-9]*" required>
+            
+            <label for="consulta">Texto de Consulta:</label>
+            <textarea id="consulta" name="consulta" rows="4" required></textarea>
+            
+            <button type="submit">Enviar Consulta</button>
+        </form>
+        <p id="mensajeConfirmacion" style="display: none;">Mensaje Enviado! Nos pondremos en contacto contigo lo antes posible.</p>
     </section>
+
 
     <section id="servicios">
         <h2>Servicios</h2>
@@ -228,6 +286,20 @@ setInterval(nextSlide, 5000); // Cambia de slide cada 5 segundos
         L.marker([40.390932, -3.729487]).addTo(mymap)
             .bindPopup('Nuestra Empresa<br>c/ Doctor Espina nº 35, 28025 Madrid.')
             .openPopup();
+
+
+
+          function enviarConsulta(event) {
+            event.preventDefault(); // Evita que se envíe el formulario automáticamente
+
+            // Obtén los valores del formulario
+            var telefono = document.getElementById("telefono").value;
+            var consulta = document.getElementById("consulta").value;
+
+            // Realiza aquí el procesamiento del formulario, como enviarlo a un servidor
+            // En este ejemplo, simplemente mostraremos el mensaje de confirmación
+            document.getElementById("mensajeConfirmacion").style.display = "block";
+        }
 </script>
 
 </body>
