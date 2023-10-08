@@ -23,7 +23,7 @@ header {
 nav ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     background-color: #008000; /* Verde */
     text-align: center;
 }
@@ -169,9 +169,10 @@ body {
 </section>
 
 
-    <section id="ubicacion">
-        <h2>Ubicación</h2>
-        <!-- Aquí puedes agregar la información de ubicación desde tu briefing, como el mapa o enlace a la ubicación en línea -->
+   <section id="mapa">
+        <h2>Ubicación de la Empresa</h2>
+        <!-- Aquí se mostrará el mapa -->
+        <div id="googleMap" style="width: 100%; height: 400px;"></div>
     </section>
 
     <section id="contacto">
@@ -192,7 +193,9 @@ body {
     <footer>
         <p>&copy; 2023 Antenas y Servicios</p>
     </footer>
-
+  <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap">
+    </script>
     <script>
    const slides = document.querySelectorAll('.slide');
 let currentIndex = 0;
@@ -215,6 +218,25 @@ function nextSlide() {
 showSlide(currentIndex);
 setInterval(nextSlide, 5000); // Cambia de slide cada 5 segundos
 
+
+        // Función para inicializar el mapa
+        function initMap() {
+            // Coordenadas de la dirección
+            var ubicacion = {lat: 40.390932, lng: -3.729487}; // Coordenadas para "c/ Doctor Espina nº 35, 28025 Madrid"
+
+            // Crea un nuevo mapa en el elemento con id "googleMap"
+            var map = new google.maps.Map(document.getElementById('googleMap'), {
+                zoom: 16, // Nivel de zoom
+                center: ubicacion // Centra el mapa en las coordenadas especificadas
+            });
+
+            // Agrega un marcador en la ubicación
+            var marker = new google.maps.Marker({
+                position: ubicacion,
+                map: map,
+                title: 'Nuestra Empresa'
+            });
+        }
 </script>
 
 </body>
