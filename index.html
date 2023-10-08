@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
     <title>Antenas y Servicios</title>
  <style>
 
@@ -172,7 +174,7 @@ body {
    <section id="mapa">
         <h2>Ubicación de la Empresa</h2>
         <!-- Aquí se mostrará el mapa -->
-        <div id="googleMap" style="width: 100%; height: 400px;"></div>
+        <div id="map" style="width: 100%; height: 400px;"></div>
     </section>
 
     <section id="contacto">
@@ -193,9 +195,7 @@ body {
     <footer>
         <p>&copy; 2023 Antenas y Servicios</p>
     </footer>
-  <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF_vtbsTO85mZ4twHieTb5noCGZdHtMWA&callback=initMap">
-    </script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
    const slides = document.querySelectorAll('.slide');
 let currentIndex = 0;
@@ -219,24 +219,15 @@ showSlide(currentIndex);
 setInterval(nextSlide, 5000); // Cambia de slide cada 5 segundos
 
 
-        // Función para inicializar el mapa
-        function initMap() {
-            // Coordenadas de la dirección
-            var ubicacion = {lat: 40.390932, lng: -3.729487}; // Coordenadas para "c/ Doctor Espina nº 35, 28025 Madrid"
+         var mymap = L.map('map').setView([40.390932, -3.729487], 16); // Coordenadas para "c/ Doctor Espina nº 35, 28025 Madrid"
 
-            // Crea un nuevo mapa en el elemento con id "googleMap"
-            var map = new google.maps.Map(document.getElementById('googleMap'), {
-                zoom: 16, // Nivel de zoom
-                center: ubicacion // Centra el mapa en las coordenadas especificadas
-            });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mymap);
 
-            // Agrega un marcador en la ubicación
-            var marker = new google.maps.Marker({
-                position: ubicacion,
-                map: map,
-                title: 'Nuestra Empresa'
-            });
-        }
+        L.marker([40.390932, -3.729487]).addTo(mymap)
+            .bindPopup('Nuestra Empresa<br>c/ Doctor Espina nº 35, 28025 Madrid.')
+            .openPopup();
 </script>
 
 </body>
