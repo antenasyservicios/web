@@ -54,26 +54,17 @@ h2 {
     color: #008000; /* Verde */
 }
 
-       /* Estilo para la sección de sliders */
+     /* Estilo para la sección de sliders */
 .sliders {
     display: flex;
     overflow: hidden;
 }
 
-     /* Estilo para la sección de sliders */
 .slider {
     width: 100%;
     height: 500px;
-    overflow: hidden; /* Oculta cualquier parte de la imagen que se desborde */
-    position: relative; /* Coloca los sliders en posición relativa */
+    transition: transform 0.5s ease-in-out;
 }
-
-.slider img {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* Ajusta la imagen para que cubra completamente el área del slider */
-}
-
 
 
 
@@ -98,19 +89,19 @@ h2 {
     </nav>
 <section class="sliders">
     <div class="slider" id="slider1">
-        <img src="imagen1.jpg" alt="Slider 1">
+        <img src="imagen1.jpg" style="width: 100%">
     </div>
     <div class="slider" id="slider2">
-        <img src="imagen2.jpg" alt="Slider 2">
+        <img src="imagen2.jpg" style="width: 100%">
     </div>
     <div class="slider" id="slider3">
-        <img src="imagen3.jpg" alt="Slider 3">
+        <img src="imagen3.jpg"  style="width: 100%">
     </div>
     <div class="slider" id="slider4">
-        <img src="imagen4.jpg" alt="Slider 4">
+        <img src="imagen4.jpg" style="width: 100%">
     </div>
     <div class="slider" id="slider5">
-        <img src="imagen5.jpg" alt="Slider 5">
+        <img src="imagen5.jpg" style="width: 100%">
     </div>
 </section>
 
