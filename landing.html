@@ -1052,7 +1052,7 @@ span.style_close__3_Vze {
 			</div>
 		</div>
 	</section>
-	<section>
+	<section style="background: white">
 		<div class="container">
 			<div class="re-list">
 				<div class="re-list__item">
@@ -1409,11 +1409,12 @@ span.style_close__3_Vze {
 			</div>
 		</div>
 	</section>
-<section id="mapa2">
+   <section id="mapa">
         <h2>Ubicación de la Empresa</h2>
         <!-- Aquí se mostrará el mapa -->
-        <div id="map2" style="width: 100%; height: 400px;"></div>
+        <div id="map" style="width: 100%; height: 400px;"></div>
     </section>
+
 
 </main>
  <footer>
@@ -1594,7 +1595,7 @@ $(document).on('ready',function(){
 
 
 
-	 var mymap2 = L.map('map').setView([40.390932, -3.729487], 16); // Coordenadas para "c/ Doctor Espina nº 35, 28025 Madrid"
+	  var mymap = L.map('map').setView([40.390932, -3.729487], 16); // Coordenadas para "c/ Doctor Espina nº 35, 28025 Madrid"
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -1603,6 +1604,7 @@ $(document).on('ready',function(){
         L.marker([40.390932, -3.729487]).addTo(mymap)
             .bindPopup('Nuestra Empresa<br>c/ Doctor Espina nº 35, 28025 Madrid.')
             .openPopup();
+
 
 </script>
 
