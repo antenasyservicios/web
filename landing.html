@@ -873,7 +873,7 @@ span.style_close__3_Vze {
 						</ul>
 
 						<form action="gracias.php" id="contactForm" method="post" novalidate="novalidate">
-						<!-- <form> -->
+						
 							<fieldset>
 								<div class="fields first f-name">
 									<input type="text" name="name" id="name" value="" placeholder="Nombre" required="" data-msg-required="Dinos un nombre, por favor" class="form-control">
@@ -895,12 +895,13 @@ span.style_close__3_Vze {
 								<div class="submit-div">
 									<input id="check" type="submit" value="Solicitar información" class="btn btn-primary btn-lg" data-loading-text="Enviando...">
 								</div>
-								<div id="resultadoEnvio" style="display: none;">
-   <!-- Aquí se mostrará el resultado del envío -->
-</div>
+								
 							</fieldset>
-						<!-- /<form> -->
+						
 						</form>
+						<div id="resultadoEnvio" style="display: none;">
+						   <!-- Aquí se mostrará el resultado del envío -->
+						</div>
 					</div>
 				</div>
 			</div>
@@ -1519,6 +1520,7 @@ $(document).ready(function () {
                   document.getElementById("resultadoEnvio").style.color = "green";
                   document.getElementById("resultadoEnvio").textContent = "¡Gracias por ponerte en contacto con nosotros!";
                   document.getElementById("resultadoEnvio").style.display = "block";
+		       document.getElementById("contactForm").style.display = "none";
                }, function(error) {
                   // Si hay un error en el envío, muestra un mensaje de error
                   document.getElementById("resultadoEnvio").style.color = "red";
