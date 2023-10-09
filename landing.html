@@ -889,7 +889,7 @@ span.style_close__3_Vze {
 								</div>
 
 								<div class="fields condition-legals">
-									<input type="checkbox" name="legal" id="legal" required="" class="form-control" data-msg-required="Debes aceptar las condiciones legales"><label>He leído y acepto las <a href="https://www.antenistasmadrid.com/aviso-legal.php">Condiciones legales</a></label>
+									<input type="checkbox"  name="legal" id="legalCheckbox" required="" class="form-control" data-msg-required="Debes aceptar las condiciones legales"><label>He leído y acepto las <a href="https://www.antenistasmadrid.com/aviso-legal.php">Condiciones legales</a></label>
 								</div>
 
 								<div class="submit-div">
@@ -1434,7 +1434,13 @@ Utilizamos cookies propias y de terceros para obtener datos estadísticos de la 
 </div>
 </div>
 </div>
-</div>
+</div><script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function() {
+      emailjs.init("vD8AirUimJoqPvHvw"); // Reemplaza "tu_user_id" con tu User ID de EmailJS
+   })();
+</script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).on('ready',function(){
@@ -1482,6 +1488,42 @@ $(document).ready(function () {
 });
 
 
+
+	document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("contactForm").addEventListener("submit", function (event) {
+         event.preventDefault(); // Evita el envío estándar del formulario
+
+         // Verifica si el checkbox está marcado
+         if (document.getElementById("legalCheckbox").checked) {
+            // Recolecta los datos del formulario
+            var nombre = document.getElementById("name").value;
+            var telefono = document.getElementById("subject").value;
+            var email = document.getElementById("email").value;
+            var observaciones = document.getElementById("message").value;
+
+            // Configura los datos para enviar a EmailJS
+            var data = {
+               nombreCompleto: nombre,
+               telefono: telefono,
+               email: email,
+               observaciones: observaciones
+            };
+
+            // Envía los datos a través de EmailJS
+            emailjs.send("service_2b9m5ed", "template_bku9ps9", data)
+               .then(function(response) {
+                  // Si el envío es exitoso, muestra un mensaje de éxito
+                  document.getElementById("contactSuccess").style.display = "block";
+               }, function(error) {
+                  // Si hay un error en el envío, muestra un mensaje de error
+                  document.getElementById("contactError").style.display = "block";
+               });
+         } else {
+            // Si el checkbox no está marcado, muestra un mensaje de error
+            alert("Debes aceptar las condiciones legales para enviar el formulario.");
+         }
+      });
+   });
 
 </script>
 </body></html>
