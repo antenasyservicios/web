@@ -895,6 +895,9 @@ span.style_close__3_Vze {
 								<div class="submit-div">
 									<input id="check" type="submit" value="Solicitar información" class="btn btn-primary btn-lg" data-loading-text="Enviando...">
 								</div>
+								<div id="resultadoEnvio" style="display: none;">
+   <!-- Aquí se mostrará el resultado del envío -->
+</div>
 							</fieldset>
 						<!-- /<form> -->
 						</form>
@@ -1513,10 +1516,14 @@ $(document).ready(function () {
             emailjs.send("service_2b9m5ed", "template_bku9ps9", data)
                .then(function(response) {
                   // Si el envío es exitoso, muestra un mensaje de éxito
-                  document.getElementById("contactSuccess").style.display = "block";
+                  document.getElementById("resultadoEnvio").style.color = "green";
+                  document.getElementById("resultadoEnvio").textContent = "¡Gracias por ponerte en contacto con nosotros!";
+                  document.getElementById("resultadoEnvio").style.display = "block";
                }, function(error) {
                   // Si hay un error en el envío, muestra un mensaje de error
-                  document.getElementById("contactError").style.display = "block";
+                  document.getElementById("resultadoEnvio").style.color = "red";
+                  document.getElementById("resultadoEnvio").textContent = "¡Vaya! Ha fallado algo y no hemos podido enviar tu mensaje.";
+                  document.getElementById("resultadoEnvio").style.display = "block";
                });
          } else {
             // Si el checkbox no está marcado, muestra un mensaje de error
